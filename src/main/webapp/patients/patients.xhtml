@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+
+<h:head>
+    <title>Patients</title>
+</h:head>
+<body>
+
+<h2>Patients</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Hospital</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ui:repeat value="#{patients.allPatients}" var="pat">
+        <tr>
+            <td >#{pat.name}</td>
+            <td >#{pat.hospital.title}</td>
+            <td >#{pat.doctors.size()}</td>
+        </tr>
+    </ui:repeat>
+    </tbody>
+</table>
+
+
+<h:form>
+    <div>
+        <label>Name: </label>
+        <h:inputText value="#{patients.patientToCreate.name}" required="true" />
+    </div>
+    <label>Hospital: </label>
+    <h:selectOneMenu value="#{patients.patientToCreate.hospital}"
+                     filter="true" filterMatchMode="contains" required="true" converter="omnifaces.SelectItemsConverter">
+        <f:selectItems value="#{hospitals.allHospitals}" var="hos"
+                       itemLabel="#{hos.title}" itemValue="#{hos}"/>
+    </h:selectOneMenu>
+    <div>
+        <label>Doctors: </label>
+        <h:selectManyMenu value="#{patients.patientToCreate.doctors}" required="true" filter="true" filterMatchMode="contains" showCheckbox="true" converter="omnifaces.SelectItemsConverter">
+            <f:selectItems value="#{doctors.allDoctors}" var="doc"
+                           itemLabel="#{doc.name}" itemValue="#{doc}"/>
+        </h:selectManyMenu>
+    </div>
+    <h:commandButton value="Add new Patient" actionListener="#{patients.createPatient}" action="/patients/patients.xhtml?faces-redirect=true"/>
+</h:form>
+
+</body>
+</html>

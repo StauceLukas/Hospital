@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<head>
+    <title>Hospitals</title>
+</head>
+<body>
+
+<h2>Hospitals</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Address</th>
+        <th scope="col">How many Patients</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ui:repeat value="#{hospitals.allHospitals}" var="hos">
+        <tr>
+            <th scope="row">#{hos.id}</th>
+            <td>#{hos.title}</td>
+            <td>#{hos.address}</td>
+            <td>#{hos.patients.size()}</td>
+        </tr>
+    </ui:repeat>
+    </tbody>
+</table>
+
+<h:form>
+    <div>
+        <label>Name: </label>
+        <h:inputText value="#{hospitals.hospitalToCreate.title}" required="true" />
+    </div>
+    <div>
+        <label>Address: </label>
+        <h:inputText value="#{hospitals.hospitalToCreate.address}" required="true" />
+    </div>
+    <h:commandButton value="Add" actionListener="#{hospitals.createHospital}" action="/hospitals/hospitals.xhtml?faces-redirect=true"/>
+</h:form>
+
+</body>
+</html>
