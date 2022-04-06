@@ -21,7 +21,7 @@ public class PatientDAO {
         this.em.persist(patient);
     }
 
-    public Patient findOne(Integer id){
+    public Patient findOne(Long id){
         return em.find(Patient.class, id);
     }
 }

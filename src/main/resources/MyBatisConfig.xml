@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.lt.vu.hospital.mybatis.model.Hospital" alias="Hospital"/>
+        <typeAlias type="com.lt.vu.hospital.mybatis.Hospital" alias="Hospital"/>
         <typeAlias type="com.lt.vu.hospital.mybatis.Doctor" alias="Doctor"/>
         <typeAlias type="com.lt.vu.hospital.mybatis.Patient" alias="Patient"/>
     </typeAliases>

@@ -1,10 +1,12 @@
 package com.lt.vu.hospital.persistence;
 
+import com.lt.vu.hospital.entities.Doctor;
 import com.lt.vu.hospital.entities.Hospital;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.print.Doc;
 import java.util.List;
 
 @ApplicationScoped
@@ -21,7 +23,7 @@ public class HospitalDAO {
         this.em.persist(hospital);
     }
 
-    public Hospital findOne(Integer id){
+    public Hospital findOne(Long id){
         return em.find(Hospital.class, id);
     }
 

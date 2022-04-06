@@ -20,7 +20,7 @@ public class DoctorDAO {
         this.em.persist(doctor);
     }
 
-    public Doctor findOne(Integer id){
+    public Doctor findOne(Long id){
         return em.find(Doctor.class, id);
     }
 

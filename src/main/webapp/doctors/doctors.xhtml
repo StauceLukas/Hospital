@@ -30,13 +30,12 @@
     </tbody>
 </table>
 
-
 <h:form>
     <div>
         <label>Name: </label>
         <h:inputText value="#{doctors.doctorToCreate.name}" required="true" />
     </div>
-    <h:commandButton value="Add new Doctor" actionListener="#{doctors.createDoctor}" action="/doctors/doctors.xhtml?faces-redirect=true"/>
+    <h:commandButton value="Add" actionListener="#{doctors.createDoctor}" action="/doctors/doctors.xhtml?faces-redirect=true"/>
 </h:form>
 </body>
 </html>

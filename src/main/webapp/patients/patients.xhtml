@@ -16,9 +16,9 @@
 <table>
     <thead>
     <tr>
-        <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Hospital</th>
+        <th scope="col">How many doctors</th>
     </tr>
     </thead>
     <tbody>
@@ -38,20 +38,26 @@
         <label>Name: </label>
         <h:inputText value="#{patients.patientToCreate.name}" required="true" />
     </div>
-    <label>Hospital: </label>
-    <h:selectOneMenu value="#{patients.patientToCreate.hospital}"
-                     filter="true" filterMatchMode="contains" required="true" converter="omnifaces.SelectItemsConverter">
-        <f:selectItems value="#{hospitals.allHospitals}" var="hos"
-                       itemLabel="#{hos.title}" itemValue="#{hos}"/>
-    </h:selectOneMenu>
+
+    <div>
+        <label>Hospital: </label>
+            <h:selectOneMenu value="#{patients.patientToCreate.hospital}" filter="true"
+                             filterMatchMode="contains" required="true"
+                             converter="omnifaces.SelectItemsConverter">
+            <f:selectItems value="#{hospitals.allHospitals}" var="hos"
+                           itemLabel="#{hos.title}" itemValue="#{hos}"/>
+            </h:selectOneMenu>
+    </div>
+
     <div>
         <label>Doctors: </label>
-        <h:selectManyMenu value="#{patients.patientToCreate.doctors}" required="true" filter="true" filterMatchMode="contains" showCheckbox="true" converter="omnifaces.SelectItemsConverter">
-            <f:selectItems value="#{doctors.allDoctors}" var="doc"
+            <h:selectManyMenu value="#{patients.patientToCreate.doctors}" required="true" filter="true" filterMatchMode="contains" showCheckbox="true" converter="omnifaces.SelectItemsConverter">
+                <f:selectItems value="#{doctors.allDoctors}" var="doc"
                            itemLabel="#{doc.name}" itemValue="#{doc}"/>
-        </h:selectManyMenu>
+            </h:selectManyMenu>
     </div>
-    <h:commandButton value="Add new Patient" actionListener="#{patients.createPatient}" action="/patients/patients.xhtml?faces-redirect=true"/>
+
+    <h:commandButton value="Add" actionListener="#{patients.createPatient}" action="/patients/patients.xhtml?faces-redirect=true"/>
 </h:form>
 
 </body>

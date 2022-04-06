@@ -1,6 +1,7 @@
 package com.lt.vu.hospital.usecases;
 
 import com.lt.vu.hospital.entities.Hospital;
+import com.lt.vu.hospital.mybatis.dao.HospitalMapper;
 import com.lt.vu.hospital.persistence.HospitalDAO;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.util.List;
 public class Hospitals{
     @Inject
     private HospitalDAO hospitalDAO;
+
 
     @Getter
     private List<Hospital> allHospitals;
@@ -36,4 +38,5 @@ public class Hospitals{
     private void loadAllLibraries(){
         this.allHospitals = hospitalDAO.loadAll();
     }
+
 }
