@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<head>
+    <title>Doctors</title>
+</head>
+<body>
+
+<h2>Doctors</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Patient_Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ui:repeat value="#{doctorsMB.allDoctors}" var="doc">
+        <tr>
+            <th scope="row">#{doc.id}</th>
+            <td>#{doc.name}</td>
+            <td>#{doc.patients.size()}</td>
+        </tr>
+    </ui:repeat>
+    </tbody>
+</table>
+
+<h:form>
+    <div>
+        <label>Name: </label>
+        <h:inputText value="#{doctorsMB.doctorToCreate.name}" required="true" />
+    </div>
+    <h:commandButton value="Add" actionListener="#{doctorsMB.createDoctor}" action="/doctors/doctorsMB.xhtml?faces-redirect=true"/>
+</h:form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.vu.hospital.mybatis.dao.PatientMapper">
+  <resultMap id="BaseResultMap" type="com.lt.vu.hospital.mybatis.Patient">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="HOSPITAL_ID" jdbcType="BIGINT" property="hospitalId" />
+
+      <association property="hospital" javaType="Hospital"
+                   select="selectHospital" column="HOSPITAL_ID"/>
+
+      <collection property="doctors" javaType="ArrayList"
+                  ofType="Doctor" column="ID"
+                  select="selectDoctors"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from PUBLIC.PATIENT
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.lt.vu.hospital.mybatis.Patient" useGeneratedKeys="true">
+    insert into PUBLIC.PATIENT (NAME, HOSPITAL_ID)
+    values (#{name,jdbcType=VARCHAR}, #{hospitalId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.lt.vu.hospital.mybatis.Patient">
+    update PUBLIC.PATIENT
+    set NAME = #{name,jdbcType=VARCHAR},
+      HOSPITAL_ID = #{hospitalId,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select ID, NAME, HOSPITAL_ID
+    from PUBLIC.PATIENT
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, NAME, HOSPITAL_ID
+    from PUBLIC.PATIENT
+  </select>
+
+    <select id="selectDoctors" resultType="Author">
+        SELECT A.ID, A.NAME
+        FROM PUBLIC.DOCTOR A
+                 JOIN PUBLIC.PATIENT_DOCTOR BA on A.ID = BA.DOCTOR_ID
+        WHERE BA.PATIENT_ID = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectHospital" resultType="Library">
+        SELECT ID,  ADDRESS, TITLE
+        FROM PUBLIC.HOSPITAL
+        WHERE ID = #{hospitalID,jdbcType=INTEGER}
+    </select>
+
+</mapper>

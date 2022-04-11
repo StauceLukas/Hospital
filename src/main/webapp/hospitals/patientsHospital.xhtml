@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<head>
+</head>
+<body>
+
+<h2>#{patientsHospital.hospital.title}</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ui:repeat value="#{patientsHospital.hospital.patients}" var="pat">
+        <tr>
+            <th scope="row">#{pat.id}</th>
+            <td>#{pat.name}</td>
+        </tr>
+    </ui:repeat>
+    </tbody>
+</table>
+</body>
+</html>
