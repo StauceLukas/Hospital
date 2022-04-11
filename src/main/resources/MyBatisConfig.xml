@@ -20,5 +20,6 @@
         <mapper class="com.lt.vu.hospital.mybatis.dao.HospitalMapper"/>
         <mapper class="com.lt.vu.hospital.mybatis.dao.DoctorMapper"/>
         <mapper class="com.lt.vu.hospital.mybatis.dao.PatientMapper"/>
+        <mapper resource="mybatis/DoctorMapper.xml"/>
     </mappers>
 </configuration>

@@ -27,6 +27,9 @@
             <td>#{hos.title}</td>
             <td>#{hos.address}</td>
             <td>#{hos.patients.size()}</td>
+            <td>
+                <a href="/hospital/hospitals/patientsHospital.xhtml?hospitalId=#{hos.id}&amp;faces-redirect=true">Patients</a>
+            </td>
         </tr>
     </ui:repeat>
     </tbody>

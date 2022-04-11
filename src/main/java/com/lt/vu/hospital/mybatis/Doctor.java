@@ -21,4 +21,11 @@ public class Doctor {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+    public void setPatients(List<Patient> patients){
+        this.patients = patients;
+    }
 }

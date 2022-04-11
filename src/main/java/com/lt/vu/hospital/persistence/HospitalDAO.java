@@ -1,12 +1,9 @@
 package com.lt.vu.hospital.persistence;
-
-import com.lt.vu.hospital.entities.Doctor;
 import com.lt.vu.hospital.entities.Hospital;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.print.Doc;
 import java.util.List;
 
 @ApplicationScoped

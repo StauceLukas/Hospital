@@ -1,6 +1,5 @@
 package com.lt.vu.hospital.mybatis;
 
-import java.util.List;
 
 public class Patient {
     private Long id;
