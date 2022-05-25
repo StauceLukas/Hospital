@@ -37,5 +37,12 @@
     </div>
     <h:commandButton value="Add" actionListener="#{doctors.createDoctor}" action="/doctors/doctors.xhtml?faces-redirect=true"/>
 </h:form>
+
+<h:form>
+    <h:outputText value="#{asyncCommunication.getAsyncTaskStatus()}" />
+    <h:commandButton value="Available doctors" disabled="#{asyncCommunication.isAsyncTaskRunning()}" action="#{asyncCommunication.generateRandomNumb()}">
+    </h:commandButton>
+</h:form>
+
 </body>
 </html>

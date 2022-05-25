@@ -39,4 +39,9 @@ public class Hospital implements Serializable {
     @OneToMany(mappedBy = "hospital")
     private Set<Patient> patients;
 
+    public Hospital(Long id, String title, String address){
+        this.id = id;
+        this.title = title;
+        this.address = address;
+    }
 }

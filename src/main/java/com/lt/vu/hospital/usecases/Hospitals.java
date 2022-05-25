@@ -1,11 +1,11 @@
 package com.lt.vu.hospital.usecases;
 
 import com.lt.vu.hospital.entities.Hospital;
-import com.lt.vu.hospital.mybatis.dao.HospitalMapper;
-import com.lt.vu.hospital.persistence.HospitalDAO;
+
+import com.lt.vu.hospital.interceptors.LoggedInvocation;
+import com.lt.vu.hospital.persistence.cdi.IHospitalDAO;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
@@ -15,7 +15,7 @@ import java.util.List;
 @Model
 public class Hospitals{
     @Inject
-    private HospitalDAO hospitalDAO;
+    private IHospitalDAO hospitalDAO;
 
 
     @Getter
@@ -30,13 +30,14 @@ public class Hospitals{
         loadAllLibraries();
     }
 
-    @Transactional
+
+    @LoggedInvocation
     public void createHospital(){
         hospitalDAO.persist(hospitalToCreate);
     }
 
     private void loadAllLibraries(){
-        this.allHospitals = hospitalDAO.loadAll();
+        this.allHospitals = hospitalDAO.showAll();
     }
 
 }

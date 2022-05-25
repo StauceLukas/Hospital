@@ -5,4 +5,14 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
+    <!--
+    <alternatives>
+        <class>com.lt.vu.hospital.persistence.cdi.AlternativeHospitalDAO</class>
+    </alternatives>
+    -->
+
+    <interceptors>
+        <class>com.lt.vu.hospital.interceptors.MethodLogger</class>
+    </interceptors>
+
 </beans>
